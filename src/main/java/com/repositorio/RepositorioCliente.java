@@ -18,22 +18,26 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-	public class RepositorioCliente {
-	      @Autowired
-	    private InterfaceCliente crud2;
+public class RepositorioCliente {
+
+	@Autowired
+	private InterfaceCliente crud2;
 	
-	    public List<Cliente> getAll(){
+	public List<Cliente> getAll(){
 	        return (List<Cliente>) crud2.findAll();
 	    }
-	    public Optional<Cliente> getCliente(int id){
+
+	public Optional<Cliente> getCliente(int id){
 	        return crud2.findById(id);
 	    }
 	
-	    public Cliente save(Cliente cliente){
+	public Cliente save(Cliente cliente){
 	        return crud2.save(cliente);
 	    }
-	    public void delete(Cliente cliente){
+
+	public void delete(Cliente cliente){
 	        crud2.delete(cliente);
 	    }
+
 	}
 

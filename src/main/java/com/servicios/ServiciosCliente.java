@@ -19,14 +19,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiciosCliente {
-       @Autowired
-     private RepositorioCliente metodosCrud;
+
+    @Autowired
+    private RepositorioCliente metodosCrud;
      
-     public List<Cliente> getAll(){
+    public List<Cliente> getAll(){
         return metodosCrud.getAll();
     }
      
-      public Optional<Cliente> getClient(int clientId) {
+    public Optional<Cliente> getClient(int clientId) {
         return metodosCrud.getCliente(clientId);
     }
 

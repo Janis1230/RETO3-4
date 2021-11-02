@@ -90,7 +90,7 @@ public class Cabin implements Serializable{
     **/
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
-    @JsonIgnoreProperties({"cabin", "reservations"})
+    @JsonIgnoreProperties({"cabin", "client"})
     /*
     *  se debe declarar los atributos con el objeto de la tabla que vamos
     * a trabajar en este caso el objeto Reservation

@@ -18,63 +18,66 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-	public class ServiciosCabin {
-	     @Autowired
-	    private RepositorioCabin metodosCrud;
+public class ServiciosCabin {
+	@Autowired
+	private RepositorioCabin metodosCrud;
 	
-	    public List<Cabin> getAll(){
+	public List<Cabin> getAll(){
 	        return metodosCrud.getAll();
 	    }
 	
-	    public Optional<Cabin> getCabin(int cabinId) {
+	public Optional<Cabin> getCabin(int cabinId) {
 	        return metodosCrud.getCabin(cabinId);
 	    }
 	
-	    public Cabin save(Cabin cabin){
-	        if(cabin.getId()==null){
-	            return metodosCrud.save(cabin);
-	        }else{
-	            Optional<Cabin> respid=metodosCrud.getCabin(cabin.getId());
-	            if(respid.isEmpty()){
-	                return metodosCrud.save(cabin);
-	            }else{
-	                return cabin;
-	            }
-	        }
+	public Cabin save(Cabin cabin){
+	    if(cabin.getId()==null){
+	       return metodosCrud.save(cabin);
+	    }else{
+	       Optional<Cabin> respid=metodosCrud.getCabin(cabin.getId());
+	       if(respid.isEmpty()){
+	           return metodosCrud.save(cabin);
+	       }else{
+	           return cabin;
+	          }
+	       }
 	    }
             
             
-            public Cabin update(Cabin cabin){
-	        if(cabin.getId()!=null){
-	            Optional<Cabin> resp=metodosCrud.getCabin(cabin.getId());
-	        
-                
-                    if(!resp.isEmpty()){
+    public Cabin update(Cabin cabin){
+	    if(cabin.getId()!=null){
+	       Optional<Cabin> resp=metodosCrud.getCabin(cabin.getId());
+
+               if(!resp.isEmpty()){
                         
-                    if(cabin.getBrand()!=null){
-                        resp.get().setBrand(cabin.getBrand());
-                    }    
+               if(cabin.getBrand()!=null){
+                    resp.get().setBrand(cabin.getBrand());
+               }
                     
-                     if(cabin.getRooms()!=null){
-                        resp.get().setRooms(cabin.getRooms());
+               if(cabin.getRooms()!=null){
+                    resp.get().setRooms(cabin.getRooms());
+               }
+                    
+               if(cabin.getName()!=null){
+                    resp.get().setName(cabin.getName());
                     }
-                    
-                    if(cabin.getName()!=null){
-                       resp.get().setName(cabin.getName());
-                    }
-                    
-                                 
-                  
-                    metodosCrud.save(resp.get());
+
+               metodosCrud.save(resp.get());
                     return resp.get();
-                    }else{
-                        return cabin;
-                    }
+               }else{
+                     return cabin;
+               }
         }else{
             return cabin;
         }
     }
-            
-           
+
+	public boolean deleteCabin(int id){
+		Boolean aBoolean = getCabin(id).map(cabin -> {
+			metodosCrud.delete(cabin);
+			return true;
+		}).orElse(false);
+		return aBoolean;
+	}
 
 }

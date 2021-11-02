@@ -33,7 +33,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
 public class ControladorCliente {
-     @Autowired
+
+    @Autowired
     private ServiciosCliente servicio;
   
     @GetMapping("/all")

@@ -19,7 +19,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiciosReservacion {
-     @Autowired
+
+    @Autowired
     private RepositorioReservacion metodosCrud;
 
     public List<Reservacion> getAll(){

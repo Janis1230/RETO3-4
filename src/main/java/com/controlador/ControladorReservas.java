@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorReservas {
     @Autowired
     private ServiciosReservacion servicio;
+
     @GetMapping("/all")
     public List<Reservacion> getReservations(){
         return servicio.getAll();
@@ -45,6 +46,7 @@ public class ControladorReservas {
     public Optional<Reservacion> getReservation(@PathVariable("id") int reservationId) {
         return servicio.getReservation(reservationId);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservacion save(@RequestBody Reservacion reservation) {
@@ -56,6 +58,7 @@ public class ControladorReservas {
     public Reservacion update(@RequestBody Reservacion reservation) {
         return servicio.update(reservation);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int reservationId) {

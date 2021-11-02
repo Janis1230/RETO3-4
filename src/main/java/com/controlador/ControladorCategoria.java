@@ -34,8 +34,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
 public class ControladorCategoria {
-     @Autowired
+
+    @Autowired
     private ServiciosCategoria servicio;
+
     @GetMapping("/all")
     public List<Categoria> getCategoria(){
         return servicio.getAll();
@@ -51,6 +53,7 @@ public class ControladorCategoria {
     public Categoria save(@RequestBody Categoria categoria) {
         return servicio.save(categoria);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Categoria update(@RequestBody Categoria categoria) {

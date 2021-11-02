@@ -22,20 +22,24 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepositorioMensaje {
-  	      @Autowired
-	    private InterfaceMensaje crud3;
+
+  	@Autowired
+	private InterfaceMensaje crud3;
 	
-	    public List<Mensaje> getAll(){
+	public List<Mensaje> getAll(){
 	        return (List<Mensaje>) crud3.findAll();
 	    }
-	    public Optional<Mensaje> getMensaje(int id){
+
+	public Optional<Mensaje> getMensaje(int id){
 	        return crud3.findById(id);
 	    }
 	
-	    public Mensaje save(Mensaje mensaje){
+	public Mensaje save(Mensaje mensaje){
 	        return crud3.save(mensaje);
 	    }
-	    public void delete(Mensaje mensaje){
+
+	public void delete(Mensaje mensaje){
 	        crud3.delete(mensaje);
 	    }
+
 	}

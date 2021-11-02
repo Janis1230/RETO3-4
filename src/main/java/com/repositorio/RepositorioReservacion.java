@@ -20,20 +20,24 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepositorioReservacion {
-    	      @Autowired
-	    private InterfaceReservas crud4;
+
+    @Autowired
+	private InterfaceReservas crud4;
 	
-	    public List<Reservacion> getAll(){
+	public List<Reservacion> getAll(){
 	        return (List<Reservacion>) crud4.findAll();
 	    }
-	    public Optional<Reservacion> getReservacion(int id){
+
+	public Optional<Reservacion> getReservacion(int id){
 	        return crud4.findById(id);
 	    }
 	
-	    public Reservacion save(Reservacion reservacion){
+	public Reservacion save(Reservacion reservacion){
 	        return crud4.save(reservacion);
 	    }
-	    public void delete(Reservacion reservacion){
+
+	public void delete(Reservacion reservacion){
 	        crud4.delete(reservacion);
 	    }
+
 	}
