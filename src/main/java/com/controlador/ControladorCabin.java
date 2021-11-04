@@ -49,6 +49,7 @@ public class ControladorCabin {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Boolean delete(@PathVariable("id") int id){return servicio.deleteCabin(id);}
-    
+    public boolean delete(@PathVariable("id") int cabinId) {
+        return servicio.deleteCabin(cabinId);
+    }
 }

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiciosCabin {
+
 	@Autowired
 	private RepositorioCabin metodosCrud;
 	
@@ -60,7 +61,13 @@ public class ServiciosCabin {
                     
                if(cabin.getName()!=null){
                     resp.get().setName(cabin.getName());
-                    }
+               }
+			   if (cabin.getDescription() != null) {
+					resp.get().setDescription(cabin.getDescription());
+			   }
+			   if(cabin.getCategory()!=null){
+					resp.get().setCategory(cabin.getCategory());
+			   }
 
                metodosCrud.save(resp.get());
                     return resp.get();
@@ -72,8 +79,8 @@ public class ServiciosCabin {
         }
     }
 
-	public boolean deleteCabin(int id){
-		Boolean aBoolean = getCabin(id).map(cabin -> {
+	public boolean deleteCabin(int cabinId){
+		Boolean aBoolean = getCabin(cabinId).map(cabin -> {
 			metodosCrud.delete(cabin);
 			return true;
 		}).orElse(false);

@@ -66,37 +66,18 @@ public class Cabin implements Serializable{
 
     @Column (nullable = false, length = 245)
     private String description;
-    /*
-    * Se revisa las relaciones de la tablas y se crean
-    * de Muchos a uno y de uno a muchos segun sea el caso
-    **/
+
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("cabins")
-     private Categoria category;
-  
-    
-      /*
-    * Se revisa las relaciones de la tablas y se crean
-    * de Muchos a uno y de uno a muchos segun sea el caso
-    **/
+    private Categoria category;
+
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
     @JsonIgnoreProperties({"cabin", "client"})
     private List<Mensaje> messages;
-   
-      /*
-    * Se revisa la persistencia de  actualizacion de la tabla
-    * si toma algun cambio
-    **/
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
-    @JsonIgnoreProperties({"cabin", "client"})
-    /*
-    *  se debe declarar los atributos con el objeto de la tabla que vamos
-    * a trabajar en este caso el objeto Reservation
-    **/
+    @JsonIgnoreProperties({"cabin", "reservations"})
     private List<Reservacion> reservations;  
 
-  
-    
 }
